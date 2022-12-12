@@ -1,0 +1,84 @@
+{
+    "categories":[
+        {
+            "title": "MenuCategory.bocasantojos",
+            "imageUrl": "dados_de_queso.jpg",
+            "anchor": "bocas_y_Antojos"
+        },
+        {
+            "title": "MenuCategory.Chifrijosceviches",
+            "imageUrl": "chifrijo_de_pescado.jpg",
+            "anchor": "chifrijos_y_ceviches"
+        },
+        {
+            "title": "MenuCategory.nachoswraps",
+            "imageUrl": "nachos.jpg",
+            "anchor": "nachos_y_wraps"
+        },
+        {
+            "title": "MenuCategory.Platosfuertes",
+            "imageUrl": "Camarones_empanizados.jpg",
+            "anchor": "platos_fuertes"
+        },
+        {
+            "title": "MenuCategory.hamburguesaalitas",
+            "imageUrl": "HAMBURGUESADEPESCADO.jpg",
+            "anchor": "hamburguesa_y_alitas"
+        },
+        {
+            "title": "MenuCategory.tacosquesadillas",
+            "imageUrl": "Taco_abierto.jpg",
+            "anchor": "tacos_y_quesadillas"
+        },
+        {
+            "title": "MenuCategory.Surtidos",
+            "imageUrl": "SURTIDO.jpg",
+            "anchor": "surtidos"
+        },
+        {
+            "title": "Shots",
+            "imageUrl": "shots.jpg",
+            "anchor": "shots"
+        },
+        {
+            "title": "Tequila",
+            "imageUrl": "tequila.jpg",
+            "anchor": "tequila"
+        },
+        {
+            "title": "Whisky",
+            "imageUrl": "whisky.jpg",
+            "anchor": "whisky"
+        },
+        {
+            "title": "Vodka",
+            "imageUrl": "vodka.jpg",
+            "anchor": "vodka"
+        },
+        {
+            "title": "MenuCategory.Vinos",
+            "imageUrl": "wines.jpg",
+            "anchor": "vinos"
+        },
+        {
+            "title": "MenuCategory.Cervezas",
+            "imageUrl": "beers.jpg",
+            "anchor": "cervezas"
+        },
+        {
+            "title": "MenuCategory.Licores",
+            "imageUrl": "liqueur.jpg",
+            "anchor": "licores"
+        },
+        {
+            "title": "Ron",
+            "imageUrl": "ron.jpg",
+            "anchor": "ron"
+        },
+        {
+            "title": "MenuCategory.Cocteles",
+            "imageUrl": "cocktails.jpg",
+            "anchor": "cocktails"
+        }
+    ]
+}

@@ -1,0 +1,16 @@
+export const Schedule = {
+    "0HoraInicio": "11:30",
+    "0HoraFin" : "22:00",
+    "1HoraInicio": "11:30",
+    "1HoraFin" : "22:00",
+    "2HoraInicio": "11:30",
+    "2HoraFin" : "22:00",
+    "3HoraInicio": "11:30",
+    "3HoraFin" : "22:00",
+    "4HoraInicio": "11:30",
+    "4HoraFin" : "23:00",
+    "5HoraInicio": "11:30",
+    "5HoraFin" : "02:00",
+    "6HoraInicio": "11:30",
+    "6HoraFin" : "02:00",
+}

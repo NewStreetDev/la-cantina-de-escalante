@@ -1,34 +1,60 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import Footer from "./Components/Footer/Footer";
 
-function App() {
-  const [count, setCount] = useState(0)
+import NavBar from "./Components/Navbar/NavBar";
+import ScrollToTop from "./Components/ScrollToTop/ScrollToTop";
+import ContactUs from "./Pages/ContactUs/ContactUS";
+import Error404 from "./Pages/ErrorPage/Error404";
+import Home from "./Pages/Home/Home";
+import Gallery from "./Pages/Gallery/Gallery"
+import Menu from "./Pages/Menu/Menu"
+import ContentMenuCategory from "./Pages/Menu/ContentMenuCategory";
+
+import { Suspense, useContext } from "react";
+import { useTranslation } from "react-i18next";
+import { Route, Routes } from "react-router-dom";
+import Spinner from "./Components/Spinner/Spinner";
+
+
+
+function ContentApp() {
+  const { t, i18n } = useTranslation(["global"]);
+
+  function ChangeLanguageConfig({ language }) {
+    i18n.changeLanguage(language);
+  }
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="Page-Container">
+      <div className="Container-wrap">
+        <NavBar
+          ChangeLanguageConfig={ChangeLanguageConfig}
+          t={t}
+          defaultLanguage={i18n.language}
+        />
+        <div className="Container">
+          <ScrollToTop>
+            <Routes>
+              <Route exact path="/" element={<Home t={t} />} />
+              <Route exact path="/contacto" element={<ContactUs t={t} />} />
+              <Route exact path="/galeria" element={<Gallery t={t} />} />
+              <Route exact path="/menu" element={<Menu t={t} />} />
+              <Route exact path="/menu/:category" element={<ContentMenuCategory t={t} />} />
+              <Route path="*" element={<Error404 t={t} />} />
+            </Routes>
+          </ScrollToTop>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Footer t={t} />
     </div>
-  )
+  );
+}
+
+function App() {
+  return (
+    <Suspense fallback={<Spinner />}>
+      <ContentApp />
+    </Suspense>
+  );
 }
 
 export default App
