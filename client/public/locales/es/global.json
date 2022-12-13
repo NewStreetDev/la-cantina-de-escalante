@@ -14,9 +14,8 @@
        "schedule1": "Domingo a Miercoles",
        "schedule2": "Jueves",
        "schedule3": "Viernes a Sábado",
-       "locationtitle" : "Ubicaciones",
-       "location1": "Heredia, costado norte de la Universidad Nacional.",
-       "location2": "San Joaquín de Flores, Heredia.",
+       "locationtitle" : "Ubicación",
+       "location1": "Barrio Escalante, 225 metros norte de la antigua Pulpería la Luz",
        "reservation": "Reservaciones",
        "reservationInfo": "Para reservaciones comuniquese al 40022597",
        "btnCall": "Llamar"
@@ -39,13 +38,15 @@
         "title": "Disfruta con nosotros lo mejor de esos años locos",
         "btnLocation": "NUESTRA UBICACIÓN",
         "aboutus": "SOBRE NOSOTROS",
-        "aboutusinfo": "Bar dedicado a disfrutar lo mejor de esos años locos de buena música y excelente ambiente. ",
+        "aboutusinfo": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum ab praesentium eum provident quibusdam asperiores quia facere, beatae ea? Quia?",
         "contactus" : "CONTÁCTENOS",
         "phone": "Teléfono",
         "btnContacto": "ENVIANOS UN CORREO",
         "promotions": "PROMOCIONES",
         "btnmenu": "VER MENÚ",
-        "atmosphere": "Atmósfera del local"
+        "atmosphere": "Atmósfera del local",
+        "btnVisit": "VISITANOS",
+        "ourMenu": "Nuestro Menú"
     },
     "ModalOpenClose": {
         "open": "Abierto",

@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Footer = styled.footer`
   background: #000000;
   color: #eee;
+  font-family: InterRegular;
 `;
 
 export const Information = styled.section`
@@ -33,7 +34,7 @@ export const Information = styled.section`
     text-align: center;
   }
 
-  div{
+  div {
     width: 250px;
     margin: 20px;
   }
@@ -50,7 +51,7 @@ export const Information = styled.section`
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    div{
+    div {
       width: 90%;
     }
   }
@@ -58,10 +59,10 @@ export const Information = styled.section`
 
 export const CompanyLogo = styled.div`
   display: flex;
-  justify-content:center;
-  align-items:center;
+  justify-content: center;
+  align-items: center;
   img {
-    width: 220px;
+    width: 250px;
     -o-object-fit: cover;
     object-fit: cover;
   }
@@ -77,46 +78,23 @@ export const CompanyLogo = styled.div`
 export const ScheduleSection = styled.div`
   padding: 0 10px;
   p:nth-child(3),
-  p:nth-child(5){
-    margin-bottom: 10px;
+  p:nth-child(5) {
+    margin-bottom: 15px;
   }
 `;
 
 export const LocationSection = styled.div`
-padding: 0 10px;
-  p:nth-child(2){
+  padding: 0 10px;
+  p:nth-child(2) {
     margin-bottom: 20px;
   }
 `;
 
-export const Reservations = styled.div`
-padding: 0 10px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  a{
-    text-decoration: none;
-    width: 100px;
-    border: 1px solid #FF5F61;
-    box-shadow: 0 0 10px #FF5F61, inset 0 0 10px #FF5F61;
-    background: transparent;
-    color: #fff;
-    padding: 10px 15px;
-    margin-top: 30px;
-    text-align: center;
-    transition: background 0.4s;
-  }
-  a:hover{
-    background: #FF5F61;
-  }
-`;
-
-
 export const CopyRight = styled.div`
-background: #222021;
+  background: #222021;
   color: #aaa;
   font-weight: 300;
-  padding: 15px;
+  padding: 25px 15px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

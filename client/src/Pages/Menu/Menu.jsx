@@ -26,7 +26,7 @@ export default function Menu({ t }) {
   return (
     <>
       <Helmet>
-        <title>Los Años Locos - Menu</title>
+        <title>La Cantina de Escalante - Menu</title>
         <meta name="description" content="Disfruta de nuestra comida" />
         <link rel="canonical" href="/menu" />
       </Helmet>

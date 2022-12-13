@@ -14,9 +14,8 @@
        "schedule1": "Sunday to Wednesday",
        "schedule2": "Thursday",
        "schedule3": "Friday to Saturday",
-       "locationtitle" : "Locations",
-       "location1": "Heredia, north side of the National University.",
-       "location2": "San Joaquín de Flores, Heredia.",
+       "locationtitle" : "Location",
+       "location1": "Barrio Escalante, 225 meters north of the old Pulpería la Luz",
        "reservation": "Reservations",
        "reservationInfo": "For reservations call 40022597",
        "btnCall": "Call"
@@ -39,13 +38,15 @@
         "title": "Enjoy with us the best of those crazy years",
         "btnLocation": "OUR LOCATION",
         "aboutus": "ABOUT US",
-        "aboutusinfo": "Bar dedicated to enjoying the best of those crazy years of good music and excellent atmosphere.  ",
+        "aboutusinfo": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum ab praesentium eum provident quibusdam asperiores quia facere, beatae ea? Quia?",
         "contactus" : "CONTACT US",
         "phone": "Phone",
         "btnContacto": "SEND US AN EMAIL",
         "promotions": "PROMOTIONS",
         "btnmenu": "SEE MENU",
-        "atmosphere": "local atmosphere"
+        "atmosphere": "local atmosphere",
+        "btnVisit": "VISIT US",
+        "ourMenu": "Our Menu"
     },
     "ModalOpenClose": {
         "open": "Open",

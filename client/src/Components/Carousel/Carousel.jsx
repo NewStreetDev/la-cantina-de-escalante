@@ -3,11 +3,6 @@ import AliceCarousel from "react-alice-carousel";
 
 import "../../index.css";
 import "react-alice-carousel/lib/alice-carousel.css";
-import burgers from "../../Images/burgers.jpg"
-import ceviche from "../../Images/ceviche.jpg"
-import cheers from "../../Images/cheers.jpg"
-import chifrijos from "../../Images/chifrijos.jpg"
-import margarona from "../../Images/margarona.jpg"
 
 const responsive = {
   0: { items: 1 },
@@ -19,19 +14,19 @@ const responsive = {
 
 const items = [
   <div className="item" data-value="1">
-      <img src={burgers} alt="burgers"/>
+      <img src="https://images.pexels.com/photos/2663974/pexels-photo-2663974.jpeg?auto=compress&cs=tinysrgb&w=600" alt=""/>
   </div>,
   <div className="item" data-value="2">
-      <img src={ceviche} alt="ceviche"/>
+      <img src="https://images.pexels.com/photos/5947110/pexels-photo-5947110.jpeg?auto=compress&cs=tinysrgb&w=600" alt=""/>
   </div>,
   <div className="item" data-value="3">
-      <img src={cheers} alt="cheers"/>
+      <img src="https://images.pexels.com/photos/9149121/pexels-photo-9149121.jpeg?auto=compress&cs=tinysrgb&w=600" alt=""/>
   </div>,
   <div className="item" data-value="4">
-      <img src={chifrijos} alt="chifrijos"/>
+      <img src="https://images.pexels.com/photos/9882302/pexels-photo-9882302.jpeg?auto=compress&cs=tinysrgb&w=600" alt=""/>
   </div>,
   <div className="item" data-value="5">
-      <img src={margarona} alt="margarona"/>
+      <img src="https://images.pexels.com/photos/11430606/pexels-photo-11430606.jpeg?auto=compress&cs=tinysrgb&w=600" alt=""/>
   </div>,
 ];
 
@@ -45,6 +40,7 @@ export default function Carousel() {
       infinite
       autoPlay
       animationDuration={3000}
+      disableButtonsControls
     />
   );
 }
