@@ -37,8 +37,6 @@ router.post("/OrderTable", createOrderTable);
 router.put("/OrderTable/:id", updateOrderTable);
 router.delete("/OrderTable/:id", deleteOrderTable);
 
-//getPreparingOrder
-//getDeliverOrder
 
 // login
 router.get("/Login/:email/:password", getLogin);
