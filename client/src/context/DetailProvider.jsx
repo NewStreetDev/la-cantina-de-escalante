@@ -7,7 +7,10 @@ import {
   updateDetailRequest
 } from "../api/detail.api";
 
-import { DetailContext } from "./DetailContext";
+// import { DetailContext } from "./DetailContext";
+import { createContext } from "react";
+
+export const DetailContext = createContext();
 
 export const useDetail = () => {
   const context = useContext(DetailContext);

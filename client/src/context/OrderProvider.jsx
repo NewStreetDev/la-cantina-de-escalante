@@ -9,7 +9,10 @@ import {
   deleteOrderTableRequest,
 } from "../api/order.api";
 
-import { OrderContext } from "./OrderContext";
+// import { OrderContext } from "./OrderContext";
+import { createContext } from "react";
+
+export const OrderContext = createContext();
 
 export const useOrder = () => {
   const context = useContext(OrderContext);

@@ -2,6 +2,7 @@ import React, { Suspense } from "react";
 import ModalOpenClose from "../../Components/OpenClose/ModalOpenClose";
 import BtnVisit from "../../Components/Buttons/Button1";
 import Button from "../../Components/Buttons/Button2";
+import Button3 from "../../Components/Buttons/Button3";
 import useNearScreen from "../../Hooks/useNearScreen";
 
 import { motion } from "framer-motion";
@@ -18,6 +19,7 @@ import { Helmet } from "react-helmet-async";
 import {
   AboutUsSection,
   ContainerHome,
+  FourthSection,
   FrontPage,
   FrontPageInfo,
   OurMenu,
@@ -104,23 +106,34 @@ export default function Home({ t }) {
         </OurMenu>
 
         <ThirdSection>
-          <article className="contentThirdSection">
-          <div className="contentInfo">
-            <p className="paragraph">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam
-              quasi iure nobis quod, iste ipsam omnis temporibus odio eligendi,
-              ex hic reprehenderit ipsum laboriosam tempore optio sequi, illum
-              asperiores labore.
-            </p>
+          <div className="ContentSection">
+            <h3>{t("Home.btnContacto")}</h3>
+            <div className="contentButton">
+              <span></span>
+              <Button3 to="/menu" value={t("Home.contactus")} />
+              <span></span>
+            </div>
           </div>
-          <picture>
-            <img
-              src="https://images.pexels.com/photos/9119767/pexels-photo-9119767.jpeg?auto=compress&cs=tinysrgb&w=600"
-              alt=""
-            />
-          </picture>
-          </article>
         </ThirdSection>
+
+        <FourthSection>
+          <article className="contentThirdSection">
+            <div className="contentInfo">
+              <p className="paragraph">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam
+                quasi iure nobis quod, iste ipsam omnis temporibus odio
+                eligendi, ex hic reprehenderit ipsum laboriosam tempore optio
+                sequi, illum asperiores labore.
+              </p>
+            </div>
+            <picture>
+              <img
+                src="https://images.pexels.com/photos/9119767/pexels-photo-9119767.jpeg?auto=compress&cs=tinysrgb&w=600"
+                alt=""
+              />
+            </picture>
+          </article>
+        </FourthSection>
       </ContainerHome>
     </>
   );

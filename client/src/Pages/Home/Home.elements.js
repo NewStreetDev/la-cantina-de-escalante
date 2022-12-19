@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import canteen from "../../Images/Canteen.jpg";
+import Bar from "../../Images/bar.jpg";
 
 export const ContainerHome = styled.div`
   position: relative;
@@ -67,7 +68,7 @@ export const FrontPageInfo = styled.div`
 
 export const AboutUsSection = styled.section`
   padding: 80px 0;
-  .content{
+  .content {
     background: #111;
     padding: 40px 30px;
     display: flex;
@@ -80,16 +81,16 @@ export const AboutUsSection = styled.section`
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    h2{
+    h2 {
       margin-bottom: 20px;
     }
-    p{
+    p {
       font-size: 20px;
       line-height: 25px;
     }
   }
   @media screen and (max-width: 900px) {
-    .content{
+    .content {
       width: 85%;
       left: 0%;
       transform: translateX(0%);
@@ -99,7 +100,8 @@ export const AboutUsSection = styled.section`
 `;
 
 export const OurMenu = styled.section`
-  padding: 20px 0px 80px 0;
+  background: #111;
+  padding: 60px 0px 80px 0;
   h2 {
     margin-bottom: 50px;
   }
@@ -113,6 +115,54 @@ export const OurMenu = styled.section`
 `;
 
 export const ThirdSection = styled.section`
+  background: url(${Bar});
+  background-position: right;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .ContentSection{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 400px;
+    height: 100%;
+    background: #000000a0;
+    h3{
+      font-size: 25px;
+      color: #fff;
+      margin-bottom: 30px;
+      text-align: center;
+      width: 100%;
+    }
+    .contentButton{
+      width: 90%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      span{
+        height: 2px;
+        width: 100%;
+        background: #eee;
+        margin: 0 15px;
+      }
+    }
+  }
+  @media screen and (max-width: 420px){
+    .ContentSection{
+      width: 100%;
+      .contentButton{
+        width: 100%;
+      }
+    }
+  }
+`;
+
+export const FourthSection = styled.section`
   padding: 80px 0;
   .contentThirdSection {
     background: #111;
@@ -166,7 +216,6 @@ export const ThirdSection = styled.section`
         padding-right: 0;
         padding: 10px;
       }
-
     }
   }
 `;

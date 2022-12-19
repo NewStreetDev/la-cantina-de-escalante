@@ -7,7 +7,10 @@ import {
   deleteProductRequest,
 } from "../api/product.api";
 
-import { ProductContext } from "./ProductContext";
+// import { ProductContext } from "./ProductContext";
+import { createContext } from "react";
+
+export const ProductContext = createContext();
 
 export const useProduct = () => {
   const context = useContext(ProductContext);

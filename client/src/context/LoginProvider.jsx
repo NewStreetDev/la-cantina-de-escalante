@@ -3,7 +3,10 @@ import {
   getLoginCredentialsRequest
 } from "../api/login.api";
 
-import { LoginContext } from "./LoginContext";
+// import { LoginContext } from "./LoginContext";
+import { createContext } from "react";
+
+export const LoginContext = createContext();
 
 export const useLogin = () => {
   const context = useContext(LoginContext);
