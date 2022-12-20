@@ -4,6 +4,7 @@ import {
   getOrderTablesRequest,
   getOrderTableDeliverRequest,
   getOrderTablePrepareRequest,
+  getOrderTablePayRequest,
   createOrderTableRequest,
   updateOrderTableRequest,
   deleteOrderTableRequest,
@@ -26,6 +27,7 @@ export const OrderContextProvider = ({ children }) => {
   const [Orders, setOrders] = useState([]);
   const [OrdersPrepare, setOrdersPrepare] = useState([]);
   const [OrdersDeliver, setOrdersDeliver] = useState([]);
+  const [OrdersPay, setOrdersPay] = useState([]);
 
   async function loadOrders() {
     const response = await getOrderTablesRequest();
@@ -40,6 +42,11 @@ export const OrderContextProvider = ({ children }) => {
   async function getOrdersPrepare() {
     const response = await getOrderTablePrepareRequest();
     setOrdersPrepare(response.data);
+  }
+
+  async function getOrdersPay() {
+    const response = await getOrderTablePayRequest();
+    setOrdersPay(response.data);
   }
 
   const deleteOrder = async (id) => {
@@ -88,6 +95,7 @@ export const OrderContextProvider = ({ children }) => {
         Orders,
         OrdersPrepare,
         OrdersDeliver,
+        OrdersPay,
         loadOrders,
         createOrder,
         deleteOrder,
@@ -95,6 +103,7 @@ export const OrderContextProvider = ({ children }) => {
         getOrder,
         getOrdersDeliver,
         getOrdersPrepare,
+        getOrdersPay,
       }}
     >
       {children}

@@ -42,6 +42,12 @@ body {
 .Container.Log {
   margin-top: 0px;
   background-color: #ecf0f3;
+  margin-left: 70px;
+}
+@media screen and (max-width: 780px){
+  .Container.Log {
+    margin-left: 0px;
+  }
 }
 
 .titleSection{

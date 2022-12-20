@@ -18,6 +18,9 @@ export const getOrderTablePrepareRequest = async () =>
 export const getOrderTableDeliverRequest = async () =>
   await axios.get(`http://localhost:4000/OrderTableDeliver`);
 
+export const getOrderTablePayRequest = async () =>
+  await axios.get(`http://localhost:4000/OrderTablePay`);
+
 export const updateOrderTableRequest = async (id, newFields) =>
   await axios.put(`http://localhost:4000/OrderTable/${id}`, newFields);
 

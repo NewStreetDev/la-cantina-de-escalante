@@ -3,17 +3,17 @@ import styled from "styled-components";
 import { useOrder } from "../../context/OrderProvider";
 import ModalVerification from "../../Components/Modal/ModalVerificacion";
 import { Toaster, toast } from "react-hot-toast";
-import CabinetCooking from "../../Components/SVG/cabinet-cooking"
+import RestaurantIcon from "../../Components/SVG/restaurant"
 
-function ToPrepare() {
-  const { OrdersPrepare, getOrdersPrepare, updateOrder } = useOrder([]);
+function ToDeliver() {
+  const { OrdersDeliver, getOrdersDeliver, updateOrder } = useOrder([]);
 
   useEffect(() => {
-    getOrdersPrepare();
+    getOrdersDeliver();
   }, []);
 
   const handleClick = async (item) => {
-    const response = await updateOrder(item, { StateID: "4" });
+    const response = await updateOrder(item, { StateID: "5" });
     if (response) {
       toast.success("Quitado exitosamente", {
         position: "bottom-center",
@@ -25,20 +25,19 @@ function ToPrepare() {
         autoClose: 3000,
       });
     }
-    getOrdersPrepare();
+    getOrdersDeliver();
   };
 
-  // console.log(OrdersPrepare)
-
+  
   return (
     <ContentPage>
       <div className="titlePage">
-        <CabinetCooking/>
-      <h1 className="titleSection">Para Preparar</h1>
+        <RestaurantIcon/>
+      <h1 className="titleSection">Para Entregar</h1>
       </div>
       
       <ContentOrders>
-        {OrdersPrepare.length === 0 ? (
+        {OrdersDeliver.length === 0 ? (
           <p>No hay Ordenes pendientes</p>
         ) : (
           <table>
@@ -50,7 +49,7 @@ function ToPrepare() {
                 <th>Categoría</th>
                 <th>Opcion</th>
               </tr>
-              {OrdersPrepare.slice(0)
+              {OrdersDeliver.slice(0)
                 .reverse()
                 .map((order) => {
                   return (
@@ -80,7 +79,7 @@ function ToPrepare() {
   );
 }
 
-export default ToPrepare;
+export default ToDeliver;
 
 const ContentPage = styled.article`
   padding: 60px 0;

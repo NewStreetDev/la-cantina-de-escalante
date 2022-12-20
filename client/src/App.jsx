@@ -21,6 +21,10 @@ import { LoginContextProvider } from "./context/LoginProvider";
 import { ProductContextProvider } from "./context/ProductProvider";
 import {OrderContextProvider} from "./context/OrderProvider"
 import ToPrepare from "./Pages/orders/ToPrepare";
+import ToDeliver from "./Pages/orders/toDeliver";
+import ToPay from "./Pages/orders/ToPay";
+import Reportes from "./Pages/orders/Reportes";
+import NavbarAdmin from "./Components/Navbar/NavbarAdmin";
 
 function ContentApp() {
   const { t, i18n } = useTranslation(["global"]);
@@ -34,7 +38,7 @@ function ContentApp() {
     <div className="Page-Container">
       <div className="Container-wrap">
         {AuthPathName.includes(location.pathname) ||
-        location.pathname.includes("/updateProduct") ? null : (
+        location.pathname.includes("/updateProduct") ? <NavbarAdmin/> : (
           <NavBar
             ChangeLanguageConfig={ChangeLanguageConfig}
             t={t}
@@ -98,6 +102,30 @@ function ContentApp() {
                 element={
                   <OrderContextProvider>
                     <ToPrepare />
+                  </OrderContextProvider>
+                }
+              />
+              <Route
+                path="/to-deliver"
+                element={
+                  <OrderContextProvider>
+                    <ToDeliver />
+                  </OrderContextProvider>
+                }
+              />
+              <Route
+                path="/to-Pay"
+                element={
+                  <OrderContextProvider>
+                    <ToPay />
+                  </OrderContextProvider>
+                }
+              />
+              <Route
+                path="/reports"
+                element={
+                  <OrderContextProvider>
+                    <Reportes />
                   </OrderContextProvider>
                 }
               />
