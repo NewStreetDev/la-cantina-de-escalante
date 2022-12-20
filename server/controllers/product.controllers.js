@@ -3,7 +3,7 @@ import { pool, connection } from "../db.js";
 // Task
 export const getProducts = async (req, res) => {
   try {
-    const [result] = await pool.query("SELECT `ProductID`, `Name`, `Price`, `Description`, `CategoryID`, `StateID` FROM `product` WHERE StateID = 1");
+    const [result] = await pool.query("SELECT `ProductID`, `Name`, `Price`, `Description`, `DescriptionEnglish`, `CategoryID` FROM `product` WHERE StateID = 1");
     res.json(result);
   } catch (error) {
     return res.status(500).json({ message: error.message });
@@ -12,7 +12,7 @@ export const getProducts = async (req, res) => {
 
 export const getProduct = async (req, res) => {
   try {
-    const [result] = await pool.query("SELECT `ProductID`, `Name`, `Price`, `Description`, `CategoryID`, `StateID` FROM `product` WHERE StateID = 1 AND ProductID = ?;", [
+    const [result] = await pool.query("SELECT `ProductID`, `Name`, `Price`, `Description`, `DescriptionEnglish`, `CategoryID`, `StateID` FROM `product` WHERE StateID = 1 AND ProductID = ?;", [
       req.params.id,
     ]);
 
@@ -28,11 +28,11 @@ export const getProduct = async (req, res) => {
 export const createProduct = async (req, res) => {
   try {
     await connection.beginTransaction();
-    const { Name, Price, Description, CategoryID} = req.body;
+    const { Name, Price, Description, DescriptionEnglish, CategoryID} = req.body;
 
     const [result] = await pool.query(
-      "INSERT INTO `product`(`ProductID`, `Name`, `Price`, `Description`, `CategoryID`, `StateID`) VALUES (?, ?, ?, ?, ?, ?)",
-      [null, Name, Price, Description, CategoryID, 1]
+      "INSERT INTO `product`(`ProductID`, `Name`, `Price`, `Description`, `DescriptionEnglish`, `CategoryID`, `StateID`) VALUES (?, ?, ?, ?, ?, ?, ?)",
+      [null, Name, Price, Description, DescriptionEnglish, CategoryID, 1]
     );
 
     await connection.commit();

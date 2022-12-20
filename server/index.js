@@ -14,7 +14,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use(indexRoutes);
-app.use(taskRoutes);
+// app.use(taskRoutes);
 
 // app.use(express.static(join(__dirname, '../client/dist')))
 

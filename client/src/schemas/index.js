@@ -53,29 +53,12 @@ export const createAccountScheme = yup.object().shape({
     .oneOf([true], "Please accept the terms of service"),
 });
 
-export const createAccountScheme2 = yup.object().shape({
-  firstName: yup.string().required("Required"),
-  lastName: yup.string().required("Required"),
-  phone: yup.string().required("Required"),
-  identification: yup
-    .number("Please enter a valid identification")
-    .positive("Please enter a valid identification")
-    .integer("Please enter a valid identification")
-    .required("Required"),
-  email: yup.string().email("Please enter a valid email").required("Required"),
-  password: yup
-    .string()
-    .min(5)
-    .matches(passwordRules, { message: "Please create a stronger password" })
-    .required("Required"),
-  confirmPassword: yup
-    .string()
-    .oneOf([yup.ref("password"), null], "Passwords must match")
-    .required("Required"),
-  dateOfBirth: yup.date().required("Required"),
-  acceptedTos: yup
-    .boolean()
-    .oneOf([true], "Please accept the terms of service"),
+export const createProductScheme = yup.object().shape({
+  Name: yup.string().required("Required"),
+  Price: yup.number("Please enter a valid price").positive("Please enter a valid price").integer("Please enter a valid price").required("Required"),
+  Description: yup.string().max(500).required("Required"),
+  DescriptionEnglish: yup.string().max(500).required("Required"),
+  CategoryID: yup.number().integer().positive().required("Required"),
 });
 
 export const settingsEmployeeScheme = yup.object().shape({

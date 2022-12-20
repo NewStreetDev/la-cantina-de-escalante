@@ -697,10 +697,11 @@ body.active-modal {
 }
 
 .form label {
-  font-size: 1rem;
+  font-size: 17px;
   font-weight: bold;
   display: block;
   text-align: left;
+  padding: 0 0 10px 0px;
   /* margin: 1rem 0 0.2rem; */
 }
 
@@ -750,7 +751,7 @@ body.active-modal {
 .form .button {
   display: block;
   margin: 1rem 0;
-  padding: 0.35rem 0.5rem;
+  padding: 0.5rem 0.5rem;
   background-color: #4299e1;
   color: #fff;
   border: none;
@@ -759,6 +760,10 @@ body.active-modal {
   font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
+  transition: opacity 0.3s;
+}
+.form .button:hover {
+  opacity: 0.8;
 }
 
 .form .buttonContent{

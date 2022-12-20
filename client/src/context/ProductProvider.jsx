@@ -61,8 +61,10 @@ export const ProductContextProvider = ({ children }) => {
     try {
       const response = await updateProductRequest(id, newFields);
       console.log(response);
+      return true
     } catch (error) {
       console.error(error);
+      return false
     }
   };
 

@@ -5,9 +5,9 @@ import {
   getDetail,
   getDetails,
   updateDetail,
-} from "../controllers/detail.controllers";
-import { getLogin } from "../controllers/login.controllers";
-const router = Router();
+} from "../controllers/detail.controllers.js";
+import { getLogin } from "../controllers/login.controllers.js";
+
 
 import {
   getOrderTables,
@@ -18,14 +18,17 @@ import {
   getOrderTablePrepare,
   getOrderTableDeliver,
   getOrderTablePay,
-} from "../controllers/orderTable.controllers";
+} from "../controllers/orderTable.controllers.js";
 import {
   createProduct,
   deleteProduct,
   getProduct,
   getProducts,
   updateProduct,
-} from "../controllers/product.controllers";
+} from "../controllers/product.controllers.js";
+
+const router = Router();
+
 
 //Order
 router.get("/OrderTable", getOrderTables);

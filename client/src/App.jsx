@@ -9,6 +9,7 @@ import Gallery from "./Pages/Gallery/Gallery";
 import Menu from "./Pages/Menu/Menu";
 import ContentMenuCategory from "./Pages/Menu/ContentMenuCategory";
 import ManagementProduct from "./Pages/ManagementProduct/ManagementProduct";
+import CreateProduct from "./Pages/ManagementProduct/CreateProduct";
 
 import { Suspense } from "react";
 import { useTranslation } from "react-i18next";
@@ -16,8 +17,8 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import Spinner from "./Components/Spinner/Spinner";
 import Login from "./Pages/Login/Login";
 import { AuthPathName } from "./config/AuthPathName";
-import {LoginContextProvider} from "./context/LoginProvider"
-import {ProductContextProvider} from "./context/ProductProvider"
+import { LoginContextProvider } from "./context/LoginProvider";
+import { ProductContextProvider } from "./context/ProductProvider";
 
 function ContentApp() {
   const { t, i18n } = useTranslation(["global"]);
@@ -27,11 +28,11 @@ function ContentApp() {
   }
 
   const location = useLocation();
-
   return (
     <div className="Page-Container">
       <div className="Container-wrap">
-        {!AuthPathName.includes(location.pathname) && (
+        {AuthPathName.includes(location.pathname) ||
+        location.pathname.includes("/updateProduct") ? null : (
           <NavBar
             ChangeLanguageConfig={ChangeLanguageConfig}
             t={t}
@@ -40,7 +41,8 @@ function ContentApp() {
         )}
         <div
           className={
-            AuthPathName.includes(location.pathname)
+            AuthPathName.includes(location.pathname) ||
+            location.pathname.includes("/updateProduct")
               ? "Container Log"
               : "Container"
           }
@@ -57,13 +59,46 @@ function ContentApp() {
                 element={<ContentMenuCategory t={t} />}
               />
               <Route path="*" element={<Error404 t={t} />} />
-              <Route path="/login" element={<LoginContextProvider><Login /></LoginContextProvider>} />
-              <Route path="/managementProduct" element={<ProductContextProvider><ManagementProduct /></ProductContextProvider>} />
+              <Route
+                path="/login"
+                element={
+                  <LoginContextProvider>
+                    <Login />
+                  </LoginContextProvider>
+                }
+              />
+              <Route
+                path="/managementProduct"
+                element={
+                  <ProductContextProvider>
+                    <ManagementProduct />
+                  </ProductContextProvider>
+                }
+              />
+              <Route
+                path="/CreateProduct"
+                element={
+                  <ProductContextProvider>
+                    <CreateProduct />
+                  </ProductContextProvider>
+                }
+              />
+              <Route
+                path="/updateProduct/:idproduct"
+                element={
+                  <ProductContextProvider>
+                    <CreateProduct />
+                  </ProductContextProvider>
+                }
+              />
             </Routes>
           </ScrollToTop>
         </div>
       </div>
-      {!AuthPathName.includes(location.pathname) && <Footer t={t} />}
+      {AuthPathName.includes(location.pathname) ||
+      location.pathname.includes("/updateProduct") ? null : (
+        <Footer t={t} />
+      )}
     </div>
   );
 }
