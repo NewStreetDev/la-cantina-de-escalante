@@ -19,6 +19,8 @@ import Login from "./Pages/Login/Login";
 import { AuthPathName } from "./config/AuthPathName";
 import { LoginContextProvider } from "./context/LoginProvider";
 import { ProductContextProvider } from "./context/ProductProvider";
+import {OrderContextProvider} from "./context/OrderProvider"
+import ToPrepare from "./Pages/orders/ToPrepare";
 
 function ContentApp() {
   const { t, i18n } = useTranslation(["global"]);
@@ -89,6 +91,14 @@ function ContentApp() {
                   <ProductContextProvider>
                     <CreateProduct />
                   </ProductContextProvider>
+                }
+              />
+              <Route
+                path="/to-prepare"
+                element={
+                  <OrderContextProvider>
+                    <ToPrepare />
+                  </OrderContextProvider>
                 }
               />
             </Routes>

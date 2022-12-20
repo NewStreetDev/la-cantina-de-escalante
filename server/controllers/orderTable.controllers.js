@@ -30,13 +30,10 @@ export const getOrderTable = async (req, res) => {
 export const getOrderTablePrepare = async (req, res) => {
   try {
     const [result] = await pool.query(
-      "SELECT ordertable.OrderID, ordertable.TableNumber, ordertable.Date, product.Name, product.Description, product.Price, detail.Quantity FROM ordertable, detail, product WHERE ordertable.StateID = 3 and ordertable.OrderID = detail.OrderID and detail.ProductID = product.ProductID;"
+      "SELECT ordertable.OrderID, ordertable.TableNumber, ordertable.Date, product.Name, product.Description, product.Price, product.CategoryID , detail.Quantity FROM ordertable, detail, product WHERE ordertable.StateID = 3 and ordertable.OrderID = detail.OrderID and detail.ProductID = product.ProductID;"
     );
 
-    if (result.length === 0)
-      return res.status(404).json({ message: "Order not found" });
-
-    res.json(result[0]);
+    res.json(result);
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
@@ -47,10 +44,7 @@ export const getOrderTableDeliver = async (req, res) => {
       "SELECT ordertable.OrderID, ordertable.TableNumber, ordertable.Date, product.Name, product.Description, product.Price, detail.Quantity FROM ordertable, detail, product WHERE ordertable.StateID = 4 and ordertable.OrderID = detail.OrderID and detail.ProductID = product.ProductID;"
     );
 
-    if (result.length === 0)
-      return res.status(404).json({ message: "Order not found" });
-
-    res.json(result[0]);
+    res.json(result);
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }

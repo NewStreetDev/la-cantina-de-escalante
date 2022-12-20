@@ -4,6 +4,7 @@ import { useProduct } from "../../context/ProductProvider";
 import Button from "../../Components/Buttons/ButtonForm";
 import { BsPencilSquare } from "react-icons/bs";
 import ModalDelete from "../../Components/Modal/modalDelete";
+import { Toaster, toast } from "react-hot-toast";
 
 
 function ManagementProduct() {
@@ -100,6 +101,7 @@ function ManagementProduct() {
           <p className="NotProducts">No hay productos</p>
         )}
       </ContainerProducts>
+      <Toaster/>
     </ContainerPage>
   );
 }
@@ -162,6 +164,9 @@ const ContainerProducts = styled.section`
     display: flex;
     justify-content: space-between;
     width: 120px;
+  }
+  .descriptionProduct{
+    width: 230px;
   }
   @media screen and (max-width: 1000px){
     width: 100%;

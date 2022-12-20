@@ -2,5 +2,6 @@ export const AuthPathName = [
     "/login",
     "/managementProduct",
     "/CreateProduct",
-    "/updateProduct/"
+    "/updateProduct/",
+    "/to-prepare"
 ]

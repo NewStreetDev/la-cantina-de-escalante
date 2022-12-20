@@ -75,8 +75,10 @@ export const OrderContextProvider = ({ children }) => {
     try {
       const response = await updateOrderTableRequest(id, newFields);
       console.log(response);
+      return true;
     } catch (error) {
       console.error(error);
+      return false
     }
   };
 
@@ -91,6 +93,8 @@ export const OrderContextProvider = ({ children }) => {
         deleteOrder,
         updateOrder,
         getOrder,
+        getOrdersDeliver,
+        getOrdersPrepare,
       }}
     >
       {children}
