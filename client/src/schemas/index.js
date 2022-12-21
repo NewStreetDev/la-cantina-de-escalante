@@ -109,3 +109,9 @@ export const createTaskScheme = yup.object().shape({
     .integer("Please enter a integer")
     .required("Required"),
 });
+
+
+export const ReportsScheme = yup.object().shape({
+  initialDate: yup.date().required("Required"),
+  finalDate: yup.date().required("Required"),
+})

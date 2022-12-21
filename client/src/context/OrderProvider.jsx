@@ -8,6 +8,7 @@ import {
   createOrderTableRequest,
   updateOrderTableRequest,
   deleteOrderTableRequest,
+  getOrderTableReports,
 } from "../api/order.api";
 
 // import { OrderContext } from "./OrderContext";
@@ -28,6 +29,7 @@ export const OrderContextProvider = ({ children }) => {
   const [OrdersPrepare, setOrdersPrepare] = useState([]);
   const [OrdersDeliver, setOrdersDeliver] = useState([]);
   const [OrdersPay, setOrdersPay] = useState([]);
+  const [Reports, setReports] = useState([]);
 
   async function loadOrders() {
     const response = await getOrderTablesRequest();
@@ -47,6 +49,11 @@ export const OrderContextProvider = ({ children }) => {
   async function getOrdersPay() {
     const response = await getOrderTablePayRequest();
     setOrdersPay(response.data);
+  }
+
+  async function getOrdersReports(initialDate, finalDate) {
+    const response = await getOrderTableReports(initialDate, finalDate);
+    setReports(response.data);
   }
 
   const deleteOrder = async (id) => {
@@ -93,6 +100,7 @@ export const OrderContextProvider = ({ children }) => {
     <OrderContext.Provider
       value={{
         Orders,
+        Reports,
         OrdersPrepare,
         OrdersDeliver,
         OrdersPay,
@@ -104,6 +112,7 @@ export const OrderContextProvider = ({ children }) => {
         getOrdersDeliver,
         getOrdersPrepare,
         getOrdersPay,
+        getOrdersReports,
       }}
     >
       {children}

@@ -18,6 +18,7 @@ import {
   getOrderTablePrepare,
   getOrderTableDeliver,
   getOrderTablePay,
+  getOrderTableReports,
 } from "../controllers/orderTable.controllers.js";
 import {
   createProduct,
@@ -39,6 +40,7 @@ router.get("/OrderTablePay", getOrderTablePay);
 router.post("/OrderTable", createOrderTable);
 router.put("/OrderTable/:id", updateOrderTable);
 router.delete("/OrderTable/:id", deleteOrderTable);
+router.get("/OrderTable/:initialDate/:finalDate", getOrderTableReports);
 
 
 // login

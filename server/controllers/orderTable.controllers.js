@@ -60,6 +60,22 @@ export const getOrderTablePay = async (req, res) => {
   }
 };
 
+export const getOrderTableReports = async (req, res) => {
+  try {
+    const [result] = await pool.query(
+      "Select sum(detail.Quantity) Cant, category.Description CategoryProduct, sum(detail.Price * detail.Quantity) FullMoney, ordertable.Date from ordertable, detail, product, category where ordertable.OrderID = detail.OrderID and product.ProductID = detail.ProductID and category.CategoryId = product.CategoryID and ordertable.Date >= ? and ordertable.Date <= ? group by category.Description order by ordertable.Date asc;",
+      [req.params.initialDate, req.params.finalDate]
+    );
+    const [result2] = await pool.query(
+      "Select sum(detail.Quantity) Cant, sum(detail.Price * detail.Quantity) FullMoney from ordertable, detail, product where ordertable.OrderID = detail.OrderID and product.ProductID = detail.ProductID and ordertable.Date >= ? and ordertable.Date <= ?",
+      [req.params.initialDate, req.params.finalDate]
+    );
+    res.json([result, result2]);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
 export const createOrderTable = async (req, res) => {
   try {
     await connection.beginTransaction();
