@@ -82,4 +82,3 @@ export const DetailContextProvider = ({ children }) => {
     </DetailContext.Provider>
   );
 };
-ll

@@ -47,6 +47,7 @@ body {
 @media screen and (max-width: 780px){
   .Container.Log {
     margin-left: 0px;
+    margin-bottom: 70px;
   }
 }
 
@@ -767,6 +768,9 @@ body.active-modal {
   font-weight: bold;
   cursor: pointer;
   transition: opacity 0.3s;
+}
+.form .button.gray {
+  background-color: #6c757d;
 }
 .form .button:hover {
   opacity: 0.8;

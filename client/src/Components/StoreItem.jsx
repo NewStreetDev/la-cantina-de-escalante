@@ -1,60 +1,136 @@
-import { Button, Card } from "react-bootstrap"
-import { useShoppingCart } from "../context/ShoppingCartContext"
-import { formatCurrency } from "../utilities/formatCurrency"
+import styled from "styled-components";
+import { useShoppingCart } from "../context/ShoppingCartContext";
+import { formatCurrency } from "../utilities/formatCurrency";
 
-export function StoreItem({ id, name, price, imgUrl }) {
+export function StoreItem({
+  Name,
+  Price,
+  ProductID,
+  Description,
+  DescriptionEnglish,
+}) {
   const {
     getItemQuantity,
     increaseCartQuantity,
     decreaseCartQuantity,
-    removeFromCart
-  } = useShoppingCart()
-  const quantity = getItemQuantity(id)
+    removeFromCart,
+  } = useShoppingCart();
+
+  const quantity = getItemQuantity(ProductID);
 
   return (
-    <Card className="h-100">
-      <Card.Img
-        variant="top"
-        src={imgUrl}
-        height="200px"
-        style={{ objectFit: "cover" }}
-      />
-      <Card.Body className="d-flex flex-column">
-        <Card.Title className="d-flex justify-content-between align-items-baseline mb-4">
-          <span className="fs-2">{name}</span>
-          <span className="ms-2 text-muted">{formatCurrency(price)}</span>
-        </Card.Title>
-        <div className="mt-auto">
-          {quantity === 0 ? (
-            <Button className="w-100" onClick={() => increaseCartQuantity(id)}>
-              + Add To Cart
-            </Button>
-          ) : (
-            <div
-              className="d-flex align-items-center flex-column"
-              style={{ gap: ".5rem" }}
-            >
-              <div
-                className="d-flex align-items-center justify-content-center"
-                style={{ gap: ".5rem" }}
-              >
-                <Button onClick={() => decreaseCartQuantity(id)}>-</Button>
-                <div>
-                  <span className="fs-3">{quantity}</span> in cart
-                </div>
-                <Button onClick={() => increaseCartQuantity(id)}>+</Button>
-              </div>
-              <Button
-                onClick={() => removeFromCart(id)}
-                variant="danger"
-                size="sm"
-              >
-                Remove
-              </Button>
-            </div>
-          )}
+    <Card>
+      <h4>
+        <span className="nameproduct">{Name}</span>
+      </h4>
+      <div className="contentProduct">
+        <div className="description">{Description}</div>
+        <div className="price">
+          <span className="price">{formatCurrency(Price)}</span>
         </div>
-      </Card.Body>
+      </div>
+      <div className="buttons mt-auto">
+        {quantity === 0 ? (
+          <button
+            className="w-100"
+            onClick={() => increaseCartQuantity(ProductID)}
+          >
+            + Add To Cart
+          </button>
+        ) : (
+          <div className="contentButtons" >
+            <div
+              className="buttonsPlusmenor"
+            >
+              <button onClick={() => decreaseCartQuantity(ProductID)}>-</button>
+              <div>
+                <span className="fs-3">{quantity} </span> En la Orden
+              </div>
+              <button onClick={() => increaseCartQuantity(ProductID)}>+</button>
+            </div>
+            <button
+              onClick={() => removeFromCart(ProductID)}
+              className="danger"
+            >
+              Quitar
+            </button>
+          </div>
+        )}
+      </div>
     </Card>
-  )
+  );
 }
+
+const Card = styled.article`
+  width: 280px;
+  padding: 20px;
+  margin: 10px;
+  background: #303030;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #ffffff50;
+  min-height: 180px;
+  h4 {
+    display: flex;
+    justify-content: between;
+    align-items: baseline;
+    margin-bottom: 4px;
+    border-bottom: 1px solid #f8f8f8;
+    .nameproduct {
+      color: #fff;
+      font-weight: 300;
+      margin-bottom: 4px;
+      font-size: 18px;
+    }
+  }
+  .contentProduct {
+    font-size: 16px;
+    color: #eee;
+    .price {
+      margin-top: 10px;
+    }
+  }
+  div.price{
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: right;
+    .price{
+      color: #FFAF37;
+    }
+  }
+  .buttons {
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .contentButtons {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.5rem;
+    .buttonsPlusmenor {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      div {
+        font-size: 14px;
+        color: #eee;
+      }
+    }
+  }
+  button{
+    background: #1FDC00;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    padding: 8px 15px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px #00000080;
+    font-weight: 600;
+  }
+  button.danger{
+    background: #FF3636;
+  }
+`;

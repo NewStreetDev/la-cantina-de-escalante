@@ -9,6 +9,8 @@ import CustomSelect from "../../Components/CustomSelect";
 import { useNavigate, useParams } from "react-router-dom";
 import { useProduct } from "../../context/ProductProvider";
 
+
+
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 function CreateProduct() {
@@ -112,6 +114,9 @@ function CreateProduct() {
               <option value="2">Licores</option>
             </CustomSelect>
             <div className="buttonContent">
+              <button className="button gray" onClick={() => navigate("/managementProduct")}>
+                Cancelar
+              </button>
               <button className="button" type="submit" disabled={isSubmitting}>
                 {idproduct ? "Actualizar" : "Crear"}
               </button>
@@ -128,6 +133,14 @@ export default CreateProduct;
 
 const ContentPage = styled.article`
   min-height: 100vh;
+  .buttonContent{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    button{
+      margin: 10px;
+    }
+  }
   padding: 80px 0;
   h1 {
     color: #222;

@@ -8,3 +8,7 @@ export const AuthPathName = [
     "/to-Pay",
     "/reports",
 ]
+
+export const OrderMenu = [
+    "/MenuOrder"
+]

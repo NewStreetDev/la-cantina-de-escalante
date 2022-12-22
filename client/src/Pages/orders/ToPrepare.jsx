@@ -4,6 +4,7 @@ import { useOrder } from "../../context/OrderProvider";
 import ModalVerification from "../../Components/Modal/ModalVerificacion";
 import { Toaster, toast } from "react-hot-toast";
 import CabinetCooking from "../../Components/SVG/cabinet-cooking"
+import { formatCurrency } from "../../Utilities/formatCurrency";
 
 function ToPrepare() {
   const { OrdersPrepare, getOrdersPrepare, updateOrder } = useOrder([]);
@@ -57,7 +58,7 @@ function ToPrepare() {
                     <tr key={order.OrderID}>
                       <td className="name">{order.Name}</td>
                       <td className="descripcion">{order.Description}</td>
-                      <td className="price">{order.Price}</td>
+                      <td className="price">{formatCurrency(order.Price)}</td>
                       <td className="category">{order.CategoryID}</td>
                       <td className="options">
                         <ModalVerification
@@ -110,7 +111,7 @@ const ContentPage = styled.article`
 
 const ContentOrders = styled.section`
   border-radius: 10px;
-  padding: 20px;
+  padding: 20px 10px;
   background: #fff;
   box-shadow: 0 0 10px #00000020;
   overflow-y: hidden;

@@ -19,12 +19,15 @@ import Login from "./Pages/Login/Login";
 import { AuthPathName } from "./config/AuthPathName";
 import { LoginContextProvider } from "./context/LoginProvider";
 import { ProductContextProvider } from "./context/ProductProvider";
-import {OrderContextProvider} from "./context/OrderProvider"
+import { OrderContextProvider } from "./context/OrderProvider";
 import ToPrepare from "./Pages/orders/ToPrepare";
 import ToDeliver from "./Pages/orders/toDeliver";
 import ToPay from "./Pages/orders/ToPay";
 import Reportes from "./Pages/orders/Reportes";
 import NavbarAdmin from "./Components/Navbar/NavbarAdmin";
+import MenuOrder from "./Pages/orders/Menu";
+import { ShoppingCartProvider } from "./context/ShoppingCartContext";
+import {AppProvider} from "./context/AppProvider"
 
 function ContentApp() {
   const { t, i18n } = useTranslation(["global"]);
@@ -35,15 +38,19 @@ function ContentApp() {
 
   const location = useLocation();
   return (
+    <AppProvider>
+    {/* <ShoppingCartProvider> */}
     <div className="Page-Container">
       <div className="Container-wrap">
         {AuthPathName.includes(location.pathname) ||
-        location.pathname.includes("/updateProduct") ? <NavbarAdmin/> : (
-          <NavBar
-            ChangeLanguageConfig={ChangeLanguageConfig}
-            t={t}
-            defaultLanguage={i18n.language}
-          />
+        location.pathname.includes("/updateProduct") ? (
+          <NavbarAdmin />
+        ) : (
+            <NavBar
+              ChangeLanguageConfig={ChangeLanguageConfig}
+              t={t}
+              defaultLanguage={i18n.language}
+            />
         )}
         <div
           className={
@@ -76,57 +83,65 @@ function ContentApp() {
               <Route
                 path="/managementProduct"
                 element={
-                  <ProductContextProvider>
+                  // <ProductContextProvider>
                     <ManagementProduct />
-                  </ProductContextProvider>
+                  // </ProductContextProvider>
                 }
               />
               <Route
                 path="/CreateProduct"
                 element={
-                  <ProductContextProvider>
+                  // <ProductContextProvider>
                     <CreateProduct />
-                  </ProductContextProvider>
+                  // </ProductContextProvider>
                 }
               />
               <Route
                 path="/updateProduct/:idproduct"
                 element={
-                  <ProductContextProvider>
+                  // <ProductContextProvider>
                     <CreateProduct />
-                  </ProductContextProvider>
+                  // </ProductContextProvider>
                 }
               />
               <Route
                 path="/to-prepare"
                 element={
-                  <OrderContextProvider>
+                  // <OrderContextProvider>
                     <ToPrepare />
-                  </OrderContextProvider>
+                  // </OrderContextProvider>
                 }
               />
               <Route
                 path="/to-deliver"
                 element={
-                  <OrderContextProvider>
+                  // <OrderContextProvider>
                     <ToDeliver />
-                  </OrderContextProvider>
+                  // </OrderContextProvider>
                 }
               />
               <Route
                 path="/to-Pay"
                 element={
-                  <OrderContextProvider>
+                  // <OrderContextProvider>
                     <ToPay />
-                  </OrderContextProvider>
+                  // </OrderContextProvider>
                 }
               />
               <Route
                 path="/reports"
                 element={
-                  <OrderContextProvider>
+                  // <OrderContextProvider>
                     <Reportes />
-                  </OrderContextProvider>
+                  // </OrderContextProvider>
+                }
+              />
+              <Route
+                path="/MenuOrder"
+                element={
+                  // <ProductContextProvider>
+                      <MenuOrder />
+                  // </ProductContextProvider>
                 }
               />
             </Routes>
@@ -138,6 +153,8 @@ function ContentApp() {
         <Footer t={t} />
       )}
     </div>
+    {/* </ShoppingCartProvider> */}
+    </AppProvider>
   );
 }
 

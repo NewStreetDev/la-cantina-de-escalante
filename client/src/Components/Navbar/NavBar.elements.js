@@ -4,12 +4,45 @@ import { Link } from "react-router-dom";
 export const ContainerNav = styled.div`
   width: 100%;
   height: 80px;
-  background-color: #1A1517;
+  background-color: #1a1517;
   position: fixed;
   z-index: 100;
   -webkit-box-shadow: 10px 0 10px #00000070;
   box-shadow: 10px 0 10px #00000070;
   font-family: InterRegular;
+
+  .orderButton {
+    width: 3rem;
+    height: 3rem;
+    position: relative;
+    border-radius: 50%;
+    border: 2px solid #24ff00;
+    background: none;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    color: #24ff00;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    svg {
+      width: 25px;
+    }
+    div {
+      border-radius: 50%;
+      background: #ff3636;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 1.5rem;
+      height: 1.5rem;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      transform: translate(25%, 25%);
+      color: #fff;
+    }
+  }
 `;
 
 export const Wrapper = styled.div`
@@ -63,7 +96,7 @@ export const Menu = styled.ul`
     backdrop-filter: blur(5px);
     position: absolute;
     top: 80px;
-    left: ${({ open }) => (open ? "0" : "-100%")}; 
+    left: ${({ open }) => (open ? "0" : "-100%")};
     width: 100%;
     height: 92vh;
     justify-content: center;
@@ -79,9 +112,8 @@ export const MenuItem = styled.li`
   div {
     position: relative;
   }
-  &.active div{
-      color: #FFC457;
-    
+  &.active div {
+    color: #ffc457;
   }
   @media screen and (max-width: 960px) {
     width: 100%;
@@ -103,7 +135,7 @@ export const MenuItem = styled.li`
       border-radius: 20px;
     }
     &.active div {
-      color: #FFC457;
+      color: #ffc457;
     }
   }
 `;
@@ -130,7 +162,7 @@ export const MenuItemLink = styled(Link)`
   -o-transition: 0.5s all ease;
   transition: 0.5s all ease;
   &:hover {
-    color: #FFC457;
+    color: #ffc457;
     -webkit-transition: 0.5s all ease;
     -o-transition: 0.5s all ease;
     transition: 0.5s all ease;
@@ -147,7 +179,7 @@ export const MenuItemLink = styled(Link)`
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    svg{
+    svg {
       display: none;
       width: 25px;
       margin-right: 10px;
@@ -162,7 +194,7 @@ export const MenuItemLink = styled(Link)`
       -webkit-box-pack: left;
       -ms-flex-pack: left;
       justify-content: left;
-      svg{
+      svg {
         display: flex;
       }
     }
@@ -208,11 +240,11 @@ export const Languages = styled.div`
   font-size: 1rem;
   font-weight: 500;
   letter-spacing: 0.5px;
-  cursor: pointer;  
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
-  svg{
+  svg {
     width: 35px;
     margin-left: 10px;
   }

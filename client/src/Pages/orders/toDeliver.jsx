@@ -5,6 +5,8 @@ import ModalVerification from "../../Components/Modal/ModalVerificacion";
 import { Toaster, toast } from "react-hot-toast";
 import RestaurantIcon from "../../Components/SVG/restaurant"
 
+import { formatCurrency} from "../../Utilities/formatCurrency"
+
 function ToDeliver() {
   const { OrdersDeliver, getOrdersDeliver, updateOrder } = useOrder([]);
 
@@ -56,7 +58,7 @@ function ToDeliver() {
                     <tr key={order.OrderID}>
                       <td className="name">{order.Name}</td>
                       <td className="descripcion">{order.Description}</td>
-                      <td className="price">{order.Price}</td>
+                      <td className="price">{formatCurrency(order.Price)}</td>
                       <td className="category">{order.CategoryID}</td>
                       <td className="options">
                         <ModalVerification

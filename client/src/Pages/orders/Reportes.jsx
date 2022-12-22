@@ -4,11 +4,11 @@ import { Form, Formik } from "formik";
 import CustomInput from "../../components/CustomInput";
 import { ReportsScheme } from "../../schemas";
 import {useOrder} from "../../context/OrderProvider"
+import { formatCurrency} from "../../Utilities/formatCurrency"
 
 function Reportes() {
   const [Dates, setDates] = useState({ initialDate: "", finalDate: "" });
   const {Reports, getOrdersReports} = useOrder()
-  console.log(Reports)
   return (
     <ContentPage>
       <ContentFilter>
@@ -55,7 +55,7 @@ function Reportes() {
                 return <tr key={index}>
                   <td>{order.Cant}</td>
                   <td className="category">{order.CategoryProduct}</td>
-                  <td className="fullMoney">₡ {order.FullMoney}</td>
+                  <td className="fullMoney">{formatCurrency(order.FullMoney)}</td>
                   <td>{order.Date.substring(0, 10)}</td>
                 </tr>
               })}
@@ -69,7 +69,7 @@ function Reportes() {
               </tr>
               {Reports[1].map((order, index) => {
                 return <tr key={index}>
-                  <td>₡ {order.FullMoney}</td>
+                  <td>{formatCurrency(order.FullMoney)}</td>
                   <td>{order.Cant}</td>
                 </tr>
               })}
@@ -86,7 +86,7 @@ export default Reportes;
 
 const ContentPage = styled.article`
   min-height: 100vh;
-  padding: 80px 0;
+  padding: 40px 0 60px 0px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -102,7 +102,8 @@ const ContentFilter = styled.section`
     min-width: 240px;
   }
   .form .button {
-    margin-left: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
     width: 170px;
     height: 45px;
   }
