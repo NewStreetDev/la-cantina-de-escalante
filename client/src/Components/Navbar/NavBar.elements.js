@@ -6,7 +6,7 @@ export const ContainerNav = styled.div`
   height: 80px;
   background-color: #1a1517;
   position: fixed;
-  z-index: 100;
+  z-index: 80;
   -webkit-box-shadow: 10px 0 10px #00000070;
   box-shadow: 10px 0 10px #00000070;
   font-family: InterRegular;

@@ -29,7 +29,7 @@ export function StoreItem({
           <span className="price">{formatCurrency(Price)}</span>
         </div>
       </div>
-      <div className="buttons mt-auto">
+      <div className="buttons ">
         {quantity === 0 ? (
           <button
             className="w-100"
@@ -62,6 +62,14 @@ export function StoreItem({
 }
 
 const Card = styled.article`
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+
   width: 280px;
   padding: 20px;
   margin: 10px;
@@ -103,6 +111,7 @@ const Card = styled.article`
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
   }
   .contentButtons {
     display: flex;
@@ -126,7 +135,7 @@ const Card = styled.article`
     color: #fff;
     font-size: 16px;
     padding: 8px 15px;
-    border-radius: 10px;
+    border-radius: 6px;
     box-shadow: 2px 2px 10px #00000080;
     font-weight: 600;
   }

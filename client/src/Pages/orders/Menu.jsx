@@ -25,7 +25,9 @@ export default MenuOrder;
 
 const ContentPage = styled.article`
   padding: 80px 0px;
+  min-height: 90vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 `;

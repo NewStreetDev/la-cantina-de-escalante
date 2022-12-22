@@ -2,12 +2,16 @@
 import { useShoppingCart } from "../context/ShoppingCartContext"
 import { formatCurrency } from "../utilities/formatCurrency"
 import { CartItem } from "./Cartltem"
+import styled from "styled-components";
+import {useProduct} from "../context/ProductProvider"
 // import storeItems from "../data/items.json"
 // import jsPDF from "jspdf"
 import React from "react"
+import { MdOutlineClose } from "react-icons/md";
 
-export function ShoppingCart({ isOpen }) {
+export default function ShoppingCart({ isOpen }) {
   const { closeCart, cartItems } = useShoppingCart()
+  const {products} = useProduct()
 
   // function generatePDF(){
   //   let doc = new jsPDF('p', 'pt');
@@ -18,9 +22,9 @@ export function ShoppingCart({ isOpen }) {
 
   //   doc.save('demo.pdf')
   // }
-
   const handleSubmit = e => {
     e.preventDefault()
+    console.log("handle Submit")
     // let doc = new jsPDF("p", "pt")
     // doc.text("Factura", 20, 20)
     // let indiceY = 60
@@ -42,34 +46,78 @@ export function ShoppingCart({ isOpen }) {
   }
 
   return (
-    <div></div>
-    // <canvas show={isOpen} onHide={closeCart} placement="end">
-    //   <div closeButton>
-    //     <h2>Cart</h2>
-    //   </div>
-    //   <section>
-    //     <div >
-    //       {/* {cartItems.map(item => (
-    //         <CartItem key={item.id} {...item} />
-    //       ))}
-    //       <div className="ms-auto fw-bold fs-5">
-    //         Total{" "}
-    //         {formatCurrency(
-    //           cartItems.reduce((total, cartItem) => {
-    //             const item = storeItems.find(i => i.id === cartItem.id)
-    //             return total + (item?.price || 0) * cartItem.quantity
-    //           }, 0)
-    //         )}
-    //       </div> */}
-    //     </div>
-    //     <button
-    //       type="button"
-    //       className="btn btn-success mt-5"
-    //       onClick={handleSubmit}
-    //     >
-    //       Download PDF
-    //     </button>
-    //   </section>
-    // </canvas>
+    <ContentCartCanvas show={isOpen}>
+      <div className="TitleCart">
+        <h2>Pedido</h2>
+        <button type="button" onClick={closeCart}><MdOutlineClose/></button>
+      </div>
+      <section className="details">
+        <div >
+          {cartItems.map(item => (
+            <CartItem key={item.id} {...item} />
+          ))}
+          <div className="pagoTotal">
+            Total{" "}
+            {formatCurrency(
+              cartItems.reduce((total, cartItem) => {
+                const item = products.find(i => i.ProductID === cartItem.id)
+                return total + (item?.Price || 0) * cartItem.quantity
+              }, 0)
+            )}
+          </div>
+        </div>
+        {/* <button
+          type="button"
+          className="btn btn-success mt-5"
+          onClick={handleSubmit}
+        >
+          Download PDF
+        </button> */}
+      </section>
+    </ContentCartCanvas>
   )
 }
+
+
+const ContentCartCanvas = styled.div`
+  position: fixed;
+  top: 0px;
+  right: ${({ show }) => (show ? "0px" : "100%")};
+  width: 300px;
+  height: 100vh;
+  background-color: #1a1517;
+  z-index: 90;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  font-family: InterRegular;
+
+  .TitleCart{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    h2{
+      font-size: 22px;
+    }
+    button{
+      background: none;
+      border: none;
+      font-size: 20px;
+      color: #eee;
+    }
+  }
+
+  .details{
+    color: #fff;
+  }
+  .pagoTotal{
+    margin-top: 20px;
+    font-weight: 500;
+    font-size: 22px;
+    text-align: right
+  }
+  @media screen and (max-width: 450px){
+    width: 100%;
+  }
+`;

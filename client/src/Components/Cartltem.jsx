@@ -1,41 +1,78 @@
-
-import { useShoppingCart } from "../context/ShoppingCartContext"
+import { useShoppingCart } from "../context/ShoppingCartContext";
 // import storeItems from "../data/items.json"
-import { formatCurrency } from "../utilities/formatCurrency"
+import { useProduct } from "../context/ProductProvider";
+import { formatCurrency } from "../utilities/formatCurrency";
+import styled from "styled-components";
 
 export function CartItem({ id, quantity }) {
-  const { removeFromCart } = useShoppingCart()
-  // const item = storeItems.find(i => i.id === id)
-  return <h1>HEllo</h1>
-  // if (item == null) return null
+  const { products } = useProduct();
+  const { removeFromCart } = useShoppingCart();
+  const item = products.find((i) => i.ProductID === id);
 
-  // return (
-  //   <article direction="horizontal" gap={2} className="d-flex align-items-center">
-  //     <img
-  //       src={item.imgUrl}
-  //       style={{ width: "125px", height: "75px", objectFit: "cover" }}
-  //     />
-  //     <div className="me-auto">
-  //       <div>
-  //         {item.name}{" "}
-  //         {quantity > 1 && (
-  //           <span className="text-muted" style={{ fontSize: ".65rem" }}>
-  //             x{quantity}
-  //           </span>
-  //         )}
-  //       </div>
-  //       <div className="text-muted" style={{ fontSize: ".75rem" }}>
-  //         {formatCurrency(item.price)}
-  //       </div>
-  //     </div>
-  //     <div> {formatCurrency(item.price * quantity)}</div>
-  //     <button
-  //       variant="outline-danger"
-  //       size="sm"
-  //       onClick={() => removeFromCart(item.id)}
-  //     >
-  //       &times;
-  //     </button>
-  //   </article>
-  // )
+  if (item == null) return null;
+
+  return (
+    <Article>
+      <div className="productDetails">
+        <div className="nameProduct">
+          {item.Name}{" "}
+          {/* {quantity > 1 && (
+            <span className="text-muted" style={{ fontSize: ".65rem" }}>
+              x{quantity}
+            </span>
+          )} */}
+        </div>
+        <div className="priceQuantity" >
+          <span>{formatCurrency(item.Price)}</span>
+          <span className="text-muted" >
+              x{quantity}
+          </span>
+        </div>
+      </div>
+      <div> {formatCurrency(item.Price * quantity)}</div>
+      <ButtonCancel onClick={() => removeFromCart(item.ProductID)}>
+        &times;
+      </ButtonCancel>
+    </Article>
+  );
 }
+
+const Article = styled.article`
+  display: flex;
+  align-items: top;
+  margin-top: 20px;
+  justify-content: space-between;
+  color: #fff;
+  .productDetails{
+    width: 100%;
+    
+    .nameProduct{
+      font-size: 17px;
+    }
+    .priceQuantity{
+      font-size: .75rem;
+      color: #FFAF37;
+      .text-muted{
+        font-size: .65rem;
+        color: #fff;
+        margin-left: 10px;
+      }
+    }
+  }
+`;
+
+const ButtonCancel = styled.button`
+  font-size: 15px;
+  color: #ff4040;
+  border: none;
+  outline: none;
+  background: none;
+  border: 1px solid #ff4040;
+  display: flex;
+  height: 20px; 
+  padding: 2px 4px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin-left: 10px;
+`;

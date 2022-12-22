@@ -18,15 +18,15 @@ import Spinner from "./Components/Spinner/Spinner";
 import Login from "./Pages/Login/Login";
 import { AuthPathName } from "./config/AuthPathName";
 import { LoginContextProvider } from "./context/LoginProvider";
-import { ProductContextProvider } from "./context/ProductProvider";
-import { OrderContextProvider } from "./context/OrderProvider";
+// import { ProductContextProvider } from "./context/ProductProvider";
+// import { OrderContextProvider } from "./context/OrderProvider";
 import ToPrepare from "./Pages/orders/ToPrepare";
 import ToDeliver from "./Pages/orders/toDeliver";
 import ToPay from "./Pages/orders/ToPay";
 import Reportes from "./Pages/orders/Reportes";
 import NavbarAdmin from "./Components/Navbar/NavbarAdmin";
 import MenuOrder from "./Pages/orders/Menu";
-import { ShoppingCartProvider } from "./context/ShoppingCartContext";
+// import { ShoppingCartProvider } from "./context/ShoppingCartContext";
 import {AppProvider} from "./context/AppProvider"
 
 function ContentApp() {

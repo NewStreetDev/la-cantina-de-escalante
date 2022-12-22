@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react"
-import { ShoppingCart } from "../components/ShoppingCart"
+import  ShoppingCart  from "../components/ShoppingCart"
 import { useLocalStorage } from "../hooks/useLocalStorage"
 
 const ShoppingCartContext = createContext({})
@@ -15,7 +15,6 @@ export function ShoppingCartProvider({ children }) {
     (quantity, item) => item.quantity + quantity,
     0
   )
-
   const openCart = () => setIsOpen(true)
   const closeCart = () => setIsOpen(false)
   function getItemQuantity(id) {
