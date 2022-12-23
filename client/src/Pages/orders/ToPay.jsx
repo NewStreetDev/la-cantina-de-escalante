@@ -38,44 +38,55 @@ function ToPay() {
       <h1 className="titleSection">Pagar Orden</h1>
       </div>
       
-      <ContentOrders>
-        {OrdersPay.length === 0 ? (
-          <p>No hay Ordenes pendientes</p>
-        ) : (
-          <table>
-            <tbody>
-              <tr>
-                <th>Nombre</th>
-                <th>Descripcion</th>
-                <th>Precio</th>
-                <th>Categoría</th>
-                <th>Opcion</th>
-              </tr>
-              {OrdersPay.slice(0)
-                .reverse()
-                .map((order) => {
-                  return (
-                    <tr key={order.OrderID}>
-                      <td className="name">{order.Name}</td>
-                      <td className="descripcion">{order.Description}</td>
-                      <td className="price">{formatCurrency(order.Price)}</td>
-                      <td className="category">{order.CategoryID}</td>
-                      <td className="options">
-                        <ModalVerification
-                          handleClickFunction={handleClick}
-                          item={order.OrderID}
-                          TitleModal={"Se quitará la orden de la lista"}
-                          SecondaryTitle={"¿Estás Seguro?"}
-                          TextButton={"Quitar"}
-                        />
-                      </td>
+      {OrdersPay.map((order, index) => {
+        return (
+          <ContentOrders key={index}>
+            {OrdersPay.length === 0 ? (
+              <p>No hay Ordenes pendientes</p>
+            ) : (
+              <>
+                <table>
+                  <tbody>
+                    <tr>
+                      <th>Nombre</th>
+                      <th>Descripcion</th>
+                      <th>Precio</th>
+                      <th>Cantidad</th>
+                      <th>N° Mesa</th>
                     </tr>
-                  );
-                })}
-            </tbody>
-          </table>
-        )}
-      </ContentOrders>
+                    {order
+                      .slice(0)
+                      .reverse()
+                      .map((product, i) => {
+                        console.log(product);
+                        return (
+                          <tr key={i}>
+                            <td className="name">{product.Name}</td>
+                            <td className="descripcion">
+                              {product.Description}
+                            </td>
+                            <td className="price">
+                              {formatCurrency(product.Price)}
+                            </td>
+                            <td className="quantity">{product.Quantity}</td>
+                            <td className="mesa">{product.TableNumber}</td>
+                          </tr>
+                        );
+                      })}
+                  </tbody>
+                </table>
+                <ModalVerification
+                  handleClickFunction={handleClick}
+                  item={order[0].OrderID}
+                  TitleModal={"Se quitará la orden de la lista"}
+                  SecondaryTitle={"¿Estás Seguro?"}
+                  TextButton={"Quitar"}
+                />
+              </>
+            )}
+          </ContentOrders>
+        );
+      })}
       <Toaster />
     </ContentPage>
   );
@@ -90,34 +101,38 @@ const ContentPage = styled.article`
   // justify-content: center;
   align-items: center;
   flex-direction: column;
-  .titlePage{
+  .titlePage {
     margin-bottom: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    svg{
+    svg {
       height: 150px;
       width: auto;
     }
-    h1{
+    h1 {
       color: #222;
       font-size: 16px;
-      margin-top: -5px;
+      margin-top: -8px;
     }
   }
-  
+  .btnReady{
+    margin: 12px 0 10px 12px;
+    font-size: 16px;
+  }
 `;
 
 const ContentOrders = styled.section`
-  border-radius: 10px;
-  padding: 20px 10px;
+  border-radius: 6px;
+  padding: 10px 8px;
   background: #fff;
   box-shadow: 0 0 10px #00000020;
   overflow-y: hidden;
   overflow-x: auto;
   width: 700px;
   min-height: 167px;
+  margin-bottom: 30px;
 
   p {
     width: 100%;
@@ -158,6 +173,9 @@ const ContentOrders = styled.section`
   }
   .price {
     width: 100px;
+  }
+  .mesa {
+    width: 150px;
   }
   @media screen and (max-width: 700px) {
     width: 100%;

@@ -38,17 +38,56 @@ export const OrderContextProvider = ({ children }) => {
 
   async function getOrdersDeliver() {
     const response = await getOrderTableDeliverRequest();
-    setOrdersDeliver(response.data);
+    const Respuesta = []
+    for (let i = 0; i < response.data.length; i++){
+      
+      if (i !== 0) {
+        if (response.data[i].OrderID === Respuesta[Respuesta.length - 1][0].OrderID){
+          Respuesta[Respuesta.length - 1].push(response.data[i])
+        }else{
+          Respuesta.push([response.data[i]])
+        }
+      }else{
+        Respuesta.push([response.data[i]])
+      }
+    }
+    setOrdersDeliver(Respuesta);
   }
 
   async function getOrdersPrepare() {
     const response = await getOrderTablePrepareRequest();
-    setOrdersPrepare(response.data);
+    const Respuesta = []
+    for (let i = 0; i < response.data.length; i++){
+      
+      if (i !== 0) {
+        if (response.data[i].OrderID === Respuesta[Respuesta.length - 1][0].OrderID){
+          Respuesta[Respuesta.length - 1].push(response.data[i])
+        }else{
+          Respuesta.push([response.data[i]])
+        }
+      }else{
+        Respuesta.push([response.data[i]])
+      }
+    }
+    setOrdersPrepare(Respuesta);
   }
 
   async function getOrdersPay() {
     const response = await getOrderTablePayRequest();
-    setOrdersPay(response.data);
+    const Respuesta = []
+    for (let i = 0; i < response.data.length; i++){
+      
+      if (i !== 0) {
+        if (response.data[i].OrderID === Respuesta[Respuesta.length - 1][0].OrderID){
+          Respuesta[Respuesta.length - 1].push(response.data[i])
+        }else{
+          Respuesta.push([response.data[i]])
+        }
+      }else{
+        Respuesta.push([response.data[i]])
+      }
+    }
+    setOrdersPay(Respuesta);
   }
 
   async function getOrdersReports(initialDate, finalDate) {
@@ -67,9 +106,9 @@ export const OrderContextProvider = ({ children }) => {
 
   const createOrder = async (order) => {
     try {
-      await createOrderTableRequest(order);
+      const response = await createOrderTableRequest(order);
       // setTasks([...tasks, response.data]);
-      return true;
+      return response.data
     } catch (error) {
       console.error(error);
       return false;

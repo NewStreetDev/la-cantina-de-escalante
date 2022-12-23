@@ -63,7 +63,7 @@ export const getOrderTablePay = async (req, res) => {
 export const getOrderTableReports = async (req, res) => {
   try {
     const [result] = await pool.query(
-      "Select sum(detail.Quantity) Cant, category.Description CategoryProduct, sum(detail.Price * detail.Quantity) FullMoney, ordertable.Date from ordertable, detail, product, category where ordertable.OrderID = detail.OrderID and product.ProductID = detail.ProductID and category.CategoryId = product.CategoryID and ordertable.Date >= ? and ordertable.Date <= ? group by category.Description order by ordertable.Date asc;",
+      "Select sum(detail.Quantity) Cant, category.Description CategoryProduct, sum(detail.Price * detail.Quantity) FullMoney, ordertable.Date from ordertable, detail, product, category where ordertable.OrderID = detail.OrderID and product.ProductID = detail.ProductID and category.CategoryId = product.CategoryID and ordertable.Date >= ? and ordertable.Date <= ? group by category.Description, ordertable.Date order by ordertable.Date asc;",
       [req.params.initialDate, req.params.finalDate]
     );
     const [result2] = await pool.query(
@@ -83,7 +83,7 @@ export const createOrderTable = async (req, res) => {
 
     const [result] = await pool.query(
       "INSERT INTO `ordertable`(`OrderID`, `TableNumber`, `StateID`, `Date`) VALUES (?, ?, ?, ?);",
-      [null, TableNumber, 1, Date]
+      [null, TableNumber, 3, Date]
     );
 
     await connection.commit();

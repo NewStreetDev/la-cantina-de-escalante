@@ -16,7 +16,7 @@ function ModalVerificacion({ handleClickFunction, item, TitleModal, SecondaryTit
   };
   return (
     <>
-      <ButtonDelete onClick={toggleModal}>
+      <ButtonDelete  className="btnReady"onClick={toggleModal}>
         Listo
       </ButtonDelete>
 
@@ -57,6 +57,7 @@ const ButtonDelete = styled.button`
   color: #fff;
   cursor: pointer;
   background: #0d6efd;
+  
 `;
 
 const Modal = styled.div`

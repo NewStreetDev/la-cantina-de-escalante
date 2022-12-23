@@ -5,6 +5,7 @@ import Button from "../../Components/Buttons/ButtonForm";
 import { BsPencilSquare } from "react-icons/bs";
 import ModalDelete from "../../Components/Modal/modalDelete";
 import { Toaster, toast } from "react-hot-toast";
+import {formatCurrency} from "../../Utilities/formatCurrency"
 
 
 function ManagementProduct() {
@@ -83,7 +84,7 @@ function ManagementProduct() {
                   <td className="titleProduct">{product.Name}</td>
                   <td className="descriptionProduct">{product.Description}</td>
                   <td className="descriptionProduct">{product.DescriptionEnglish}</td>
-                  <td className="price">{product.Price}</td>
+                  <td className="price">{formatCurrency(product.Price)}</td>
                   <td className="CategoryID">{product.CategoryID}</td>
                   <td className="options">
                     <ModalDelete handleClickDelete={handleClickDelete} item={product.ProductID}/>

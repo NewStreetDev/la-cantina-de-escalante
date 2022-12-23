@@ -55,6 +55,9 @@ export function ShoppingCartProvider({ children }) {
       return currItems.filter(item => item.id !== id)
     })
   }
+  function removeAll(){
+    setCartItems([])
+  }
 
   return (
     <ShoppingCartContext.Provider
@@ -66,7 +69,8 @@ export function ShoppingCartProvider({ children }) {
         openCart,
         closeCart,
         cartItems,
-        cartQuantity
+        cartQuantity,
+        removeAll,
       }}
     >
       {children}
