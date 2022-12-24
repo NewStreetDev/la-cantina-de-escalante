@@ -33,7 +33,7 @@ function login() {
           } else {
             // console.log(response)
             dispatch({ type: "LOGIN", payload: response });
-            navigate("/");
+            navigate("/managementProduct");
           }
         }}
       >

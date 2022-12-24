@@ -99,7 +99,7 @@ export default function ShoppingCart({ isOpen }) {
   };
 
   const handleChange = (event) => {
-    setTableNumber(event.target.value);
+    setTableNumber(parseInt(event.target.value));
   };
 
   return (
@@ -129,7 +129,7 @@ export default function ShoppingCart({ isOpen }) {
         <div className="selectTable">
           <label>Elija el número de mesa</label>
           <select name="tableNumber" onChange={handleChange}>
-            <option value="">Elija una opción</option>
+            <option value="0">Elija una opción</option>
             <option value="1">Mesa 1</option>
             <option value="2">Mesa 2</option>
             <option value="3">Mesa 3</option>
@@ -139,7 +139,7 @@ export default function ShoppingCart({ isOpen }) {
           </select>
         </div>
 
-        <button type="button" className="MakeOrder" onClick={MakeOrder} disabled={cartItems.length === 0}>
+        <button type="button" className="MakeOrder" onClick={MakeOrder} disabled={cartItems.length === 0 || table === 0}>
           Realizar Orden
         </button>
       </section>

@@ -28,6 +28,6 @@ const ContentPage = styled.article`
   min-height: 90vh;
   display: flex;
   justify-content: center;
-  align-items: center;
+  // align-items: center;
   flex-wrap: wrap;
 `;
