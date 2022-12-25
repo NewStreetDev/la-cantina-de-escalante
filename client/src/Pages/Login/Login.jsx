@@ -25,7 +25,7 @@ function login() {
         enableReinitialize={true}
         onSubmit={async (values) => {
           const response = await VerificarLogin(values.email, values.password);
-          console.log(response, values)
+          // console.log(response, values)
           if (!response) {
             toast.error("No existe la cuenta", {
               position: "bottom-center",

@@ -58,7 +58,6 @@ function ToDeliver() {
                       .slice(0)
                       .reverse()
                       .map((product, i) => {
-                        console.log(product);
                         return (
                           <tr key={i}>
                             <td className="name">{product.Name}</td>
