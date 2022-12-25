@@ -18,15 +18,12 @@ import Spinner from "./Components/Spinner/Spinner";
 import Login from "./Pages/Login/Login";
 import { AuthPathName } from "./config/AuthPathName";
 import { LoginContextProvider } from "./context/LoginProvider";
-// import { ProductContextProvider } from "./context/ProductProvider";
-// import { OrderContextProvider } from "./context/OrderProvider";
 import ToPrepare from "./Pages/orders/ToPrepare";
 import ToDeliver from "./Pages/orders/toDeliver";
 import ToPay from "./Pages/orders/ToPay";
 import Reportes from "./Pages/orders/Reportes";
 import NavbarAdmin from "./Components/Navbar/NavbarAdmin";
 import MenuOrder from "./Pages/orders/Menu";
-// import { ShoppingCartProvider } from "./context/ShoppingCartContext";
 import { AppProvider } from "./context/AppProvider";
 import { AuthContext } from "./context/AuthContext";
 
@@ -47,7 +44,6 @@ function ContentApp() {
   const location = useLocation();
   return (
     <AppProvider>
-      {/* <ShoppingCartProvider> */}
       <div className="Page-Container">
         <div className="Container-wrap">
           {AuthPathName.includes(location.pathname) ||
@@ -91,79 +87,63 @@ function ContentApp() {
                 <Route
                   path="/managementProduct"
                   element={
-                    // <ProductContextProvider>
                     <RequiredAuth>
                       <ManagementProduct />
                     </RequiredAuth>
-                    // </ProductContextProvider>
                   }
                 />
                 <Route
                   path="/CreateProduct"
                   element={
-                    // <ProductContextProvider>
                     <RequiredAuth>
                       <CreateProduct />
                     </RequiredAuth>
-                    // </ProductContextProvider>
                   }
                 />
                 <Route
                   path="/updateProduct/:idproduct"
                   element={
-                    // <ProductContextProvider>
                     <RequiredAuth>
                       <CreateProduct />
                     </RequiredAuth>
-                    // </ProductContextProvider>
                   }
                 />
                 <Route
                   path="/to-prepare"
                   element={
-                    // <OrderContextProvider>
                     <RequiredAuth>
                       <ToPrepare />
                     </RequiredAuth>
-                    // </OrderContextProvider>
                   }
                 />
                 <Route
                   path="/to-deliver"
                   element={
-                    // <OrderContextProvider>
                     <RequiredAuth>
                       <ToDeliver />
                     </RequiredAuth>
-                    // </OrderContextProvider>
                   }
                 />
                 <Route
                   path="/to-Pay"
                   element={
-                    // <OrderContextProvider>
                     <RequiredAuth>
                       <ToPay />
                     </RequiredAuth>
-                    // </OrderContextProvider>
                   }
                 />
                 <Route
                   path="/reports"
                   element={
-                    // <OrderContextProvider>
                     <RequiredAuth>
                       <Reportes />
                     </RequiredAuth>
-                    // </OrderContextProvider>
                   }
                 />
                 <Route
                   path="/MenuOrder"
                   element={
-                    // <ProductContextProvider>
                     <MenuOrder />
-                    // </ProductContextProvider>
                   }
                 />
               </Routes>
@@ -175,7 +155,6 @@ function ContentApp() {
           <Footer t={t} />
         )}
       </div>
-      {/* </ShoppingCartProvider> */}
     </AppProvider>
   );
 }
