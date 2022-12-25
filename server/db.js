@@ -15,4 +15,5 @@ export const pool = createPool({
   database: DB_DATABASE,
 });
 
+
 export const connection = await pool.getConnection();
