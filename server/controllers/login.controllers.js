@@ -7,7 +7,6 @@ export const getLogin = async (req, res) => {
       "SELECT `LoginID`, `email`, `password`, `privilegesID` FROM `login` WHERE `email` = ? AND `password` = ? AND StateID = 1",
       [req.params.email, req.params.password,]
     );
-    console.log(req.params.email, req.params.password, result)
     res.json(result[0]);
   } catch (error) {
     return res.status(404).json({ message: "user not found" });
