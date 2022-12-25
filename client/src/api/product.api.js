@@ -1,18 +1,19 @@
 import axios from "axios";
+import {DOMINIO} from "../../../server/config.js"
 
 export const getProductsRequest = async () =>
-  await axios.get(`http://localhost:4000/Product`);
+  await axios.get(`${DOMINIO}/Product`);
 
 export const createProductRequest = async (Product) =>
-  await axios.post("http://localhost:4000/Product", Product);
+  await axios.post("${DOMINIO}/Product", Product);
 
 export const deleteProductRequest = async (id) =>
-  await axios.delete(`http://localhost:4000/Product/${id}`);
+  await axios.delete(`${DOMINIO}/Product/${id}`);
 
 export const getProductRequest = async (id) =>
-  await axios.get(`http://localhost:4000/Product/${id}`);
+  await axios.get(`${DOMINIO}/Product/${id}`);
 
 export const updateProductRequest = async (id, newFields) =>
-  await axios.put(`http://localhost:4000/Product/${id}`, newFields);
+  await axios.put(`${DOMINIO}/Product/${id}`, newFields);
 
 
