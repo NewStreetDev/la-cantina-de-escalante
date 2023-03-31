@@ -1,0 +1,1 @@
+import{j as a}from"./index.0a8749e9.js";function t(){return a("iframe",{title:"Los anos locos",src:"https://maps.google.com/maps?q=la%20cantina%20de%20escalante&t=&z=13&ie=UTF8&iwloc=&output=embed",id:"gmap_canvas"})}export{t as default};
